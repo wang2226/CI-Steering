@@ -164,7 +164,7 @@ def _compute_cos_loss_single(
         direction = directions[layer_idx]
         h = hidden_states[layer_idx + 1]  # (batch, seq_len, hidden_dim)
 
-            mask = attention_mask.unsqueeze(-1).float()
+        mask = attention_mask.unsqueeze(-1).float()
         h_masked = h * mask
         seq_lengths = mask.sum(dim=1).clamp(min=1)
         h_avg = h_masked.sum(dim=1) / seq_lengths
